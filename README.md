@@ -1,7 +1,7 @@
 # Robbi platformer
 
 ## Introduction:
-Shadows Within is a dark and atmospheric platformer game where you, the player, must navigate through treacherous environments filled with shadowy enemies. Armed only with a flickering torch, you must overcome your own fears and insecurities as you strive to escape the realm of darkness.
+Robbi platformer is a dark and atmospheric platformer game where you, the player, must navigate through treacherous environments filled with shadowy enemies. Armed only with a flickering torch, you must overcome your own fears and insecurities as you strive to escape the realm of darkness.
 
 ## Objective:
 Your objective is to navigate through each level, defeating shadowy enemies known as Self-Reflections and ultimately escaping the Shadowlands.
