@@ -8,6 +8,7 @@ Your objective is to navigate through each level, defeating shadowy enemies know
 
 ## Controls:
 - Use the 'S' key to crouch.
+- Use the 'B' key to toggle the torch light.
 - Press the Spacebar to jump.
 
 ## Gameplay:
