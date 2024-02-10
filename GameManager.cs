@@ -8,13 +8,16 @@ public class GameManager : MonoBehaviour
 	static GameManager current;
 
 	public float deathSequenceDuration = 1.5f;	
+	public int fearcount;
 						
 	Door lockedDoor;							
 	SceneFader sceneFader;						
 
-	int numberOfDeaths;							
+	int numberOfDeaths;	
+	int fearKilled;						
 	float totalGameTime;						
-	bool isGameOver;						
+	bool isGameOver;							
+
 
 	void Awake()
 	{
@@ -24,10 +27,8 @@ public class GameManager : MonoBehaviour
 			return;
 		}
 
-		
 		current = this;
 
-		orbs = new List<Orb>();
 
 		DontDestroyOnLoad(gameObject);
 	}
@@ -67,6 +68,8 @@ public class GameManager : MonoBehaviour
 
 	
 
+	
+
 	public static void PlayerDied()
 	{
 		if (current == null)
@@ -75,10 +78,31 @@ public class GameManager : MonoBehaviour
 		current.numberOfDeaths++;
 		UIManager.UpdateDeathUI(current.numberOfDeaths);
 
+		current.fearKilled=0;
+		UIManager.Updatfear(current.fearKilled);
+
 		if(current.sceneFader != null)
 			current.sceneFader.FadeSceneOut();
 
 		current.Invoke("RestartScene", current.deathSequenceDuration);
+	}
+	public static void fearkilled()
+	{
+		if (current == null)
+			return;
+		
+		Debug.Log(current.fearKilled);
+
+		current.fearKilled++;
+
+		if (current.fearKilled == current.fearcount)
+			current.lockedDoor.Open();
+
+		
+		UIManager.Updatfear(current.fearKilled);
+
+		if(current.sceneFader != null)
+			current.sceneFader.FadeSceneOut();
 	}
 
 	public static void PlayerWon()
@@ -94,7 +118,9 @@ public class GameManager : MonoBehaviour
 
 	void RestartScene()
 	{
+
 		AudioManager.PlaySceneRestartAudio();
+
 		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); 
 	}
 }
